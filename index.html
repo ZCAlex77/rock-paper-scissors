@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+    html{font-family: 'Righteous', cursive;}
+    *{margin: 0; padding: 0; box-sizing: border-box}
+    body{height: 100vh; background: lightskyblue; overflow: hidden;}
+    :where(.flex-center){display: flex; align-items: center; justify-content: center;}
+    .status, .ground, .selectOption{position: absolute; width: 100%;}
+    .status{justify-content: space-around; padding: 2rem; top: 0; height: 20vh;}
+    .health-bar{flex-basis: 50%; padding: 0 1rem; height: 70px;}
+    .health-bar h1{background: white; text-align: center; padding: .2rem; flex-basis: 20%; z-index: 20; font-size: 1.8rem;}
+    .health-bar meter{flex-basis: 80%; height: 100%;}
+    .health-bar:first-child h1{color: green; transform: skewX(-20deg) translateX(10px);}
+    .health-bar:last-child h1{color: orangered; transform: skewX(20deg) translateX(-10px);}
+    meter{display: block;}
+    meter::-webkit-meter-bar{background: lightyellow; border-radius: 0;}
+    meter::-webkit-meter-optimum-value{height: 100%; background: red;}
+    .selectOption{height: 100%; gap: 2rem;}
+    .option{color: #fff; border: 3px solid #fff; border-radius: 50%; width: 100px; aspect-ratio: 1/1; cursor: pointer; font-weight: bold; font-size: 1.2rem;}
+    .option:hover{color: #222; border: 3px solid #222;}
+    .ground{height: 30vh; background-image: url("./assets/ground.jpg"); background-size: cover; bottom: 0;}
+    .ground h1{width: 100%; color: #fff; padding: 1.5rem; font-size: 2.5rem; text-align: center;}
+  </style>
+</head>
+<body>
+  <div class="status flex-center">
+    <div class="health-bar flex-center">
+      <h1>You</h1>
+      <meter min="0" max="100" value="100"></meter>
+    </div>
+    <div class="health-bar flex-center">
+      <meter min="0" max="100" value="100"></meter>
+      <h1>Computer</h1>
+    </div>
+  </div>
+  <div class="selectOption flex-center">
+    <div class="option flex-center">Rock</div>
+    <div class="option flex-center">Paper</div>
+    <div class="option flex-center">Scissors</div>
+  </div>
+  <div class="ground flex-center"><h1>Rock Paper Scissors</h1></div>
+  <script src="./script.js"></script>
+</body>
+</html>
