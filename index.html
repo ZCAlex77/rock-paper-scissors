@@ -11,8 +11,8 @@
     *{margin: 0; padding: 0; box-sizing: border-box}
     body{height: 100vh; background: lightskyblue; overflow: hidden;}
     :where(.flex-center){display: flex; align-items: center; justify-content: center;}
-    .status, .ground, .selectOption{position: absolute; width: 100%;}
-    .status{justify-content: space-around; padding: 2rem; top: 0; height: 20vh;}
+    .status, .ground, .selectOption, .battleground{position: absolute; width: 100%;}
+    .status{justify-content: space-around; padding: 2rem; top: 3rem; height: 20vh;}
     .health-bar{flex-basis: 50%; padding: 0 1rem; height: 70px;}
     .health-bar h1{background: white; text-align: center; padding: .2rem; flex-basis: 20%; z-index: 20; font-size: 1.8rem;}
     .health-bar meter{flex-basis: 80%; height: 100%;}
@@ -21,14 +21,24 @@
     meter{display: block;}
     meter::-webkit-meter-bar{background: lightyellow; border-radius: 0;}
     meter::-webkit-meter-optimum-value{height: 100%; background: red;}
+    .battleground{justify-content: space-between; padding: 0 10vw; bottom: 30vh;}
+    .player img{height: 40vh; width: auto;}
+    .player{flex-direction: row-reverse; animation: float 1.5s linear infinite alternate;}
+    .player:last-child{flex-direction: row;}
+    .player p{user-select: none; text-align: center;}
+    .attack{font-size: 10vh;}
+    .damage{animation: damage 1s linear infinite forwards; position: absolute; top: 25%; animation-play-state: paused;}
     .selectOption{height: 100%; gap: 2rem;}
-    .option{color: #fff; border: 3px solid #fff; border-radius: 50%; width: 100px; aspect-ratio: 1/1; cursor: pointer; font-weight: bold; font-size: 1.2rem;}
-    .option:hover{color: #222; border: 3px solid #222;}
-    .ground{height: 30vh; background-image: url("./assets/ground.jpg"); background-size: cover; bottom: 0;}
-    .ground h1{width: 100%; color: #fff; padding: 1.5rem; font-size: 2.5rem; text-align: center;}
+    .option{color: #fff; border: 3px solid #000; border-radius: 50%; width: 100px; aspect-ratio: 1/1; cursor: pointer; font-size: 3rem;}
+    .option:hover{border: 3px solid #FFC83D;}
+    .ground{height: 30vh; background-color: #098829; bottom: 0;}
+    h1{width: 100%; color: #fff; padding: 1.5rem; font-size: 2.5rem; text-align: center;}
+    @keyframes float{from{transform: translateY(0);} to{transform: translateY(20px)}}
+    @keyframes damage{from{font-size: 0vh; opacity: 1;} to{font-size: 10vh; opacity: 0;  animation-play-state: paused;}}
   </style>
 </head>
 <body>
+  <h1>Rock Paper Scissors</h1>
   <div class="status flex-center">
     <div class="health-bar flex-center">
       <h1>You</h1>
@@ -39,12 +49,25 @@
       <h1>Computer</h1>
     </div>
   </div>
-  <div class="selectOption flex-center">
-    <div class="option flex-center">Rock</div>
-    <div class="option flex-center">Paper</div>
-    <div class="option flex-center">Scissors</div>
+  <div class="battleground flex-center">
+    <div class="player flex-center">
+      <p class="attack"></p>
+      <p class="damage">&#128165;</p>
+      <img src="./assets/human.svg" alt="human">
+    </div>
+    <div class="player flex-center">
+      <p class="attack"></p>
+      <p class="damage">&#128165;</p>
+      <img src="./assets/computer.svg" alt="computer">
+    </div>
   </div>
-  <div class="ground flex-center"><h1>Rock Paper Scissors</h1></div>
+  <div class="ground flex-center">
+    <div class="selectOption flex-center">
+      <div class="option flex-center">&#x270A;</div>
+      <div class="option flex-center">&#x270B;</div>
+      <div class="option flex-center">&#x270C;</div>
+    </div>
+  </div>
   <script src="./script.js"></script>
 </body>
 </html>
